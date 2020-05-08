@@ -40,4 +40,4 @@ module.exports = config;
 |**`dry`**|`boolean`|`false`|If `true`, simulates the removing and see what would be deleted|
 |**`force`**|`boolean`|`false`|If `true`, allows deleting files outside current working directory|
 |**`event`**|`'before'`|`'after'`|`'before'`|Running time (before or after compiling)|
-|**`include`**|`string[]`|`['*']`|The array of files to remove (if not specified, remove all files excludingspecified in `ignore`)|
+|**`include`**|`string[]`|`['*']`|The array of files to remove (if not specified, remove all files excluding specified in `ignore`)|
