@@ -1,4 +1,4 @@
-![version](https://img.shields.io/badge/version-1.2.3-blue)
+![version](https://img.shields.io/badge/version-1.1.7-blue)
 ![dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)
 
 # clean-built-webpack-plugin
