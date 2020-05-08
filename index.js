@@ -50,7 +50,7 @@ class CleanPlugin {
   /**
    * @private
    */
-  cleanOutputDir = () => {
+  cleanOutputDir() {
     const files = del.sync(['*'], {
       cwd: this.outputPath,
       ignore: this.ignore,
