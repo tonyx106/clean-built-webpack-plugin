@@ -19,7 +19,7 @@ class CleanPlugin {
    * @param {boolean} [config.force] If `true`, allows deleting files outside 
    * current working directory.
    */
-  constructor({ dry = false, force = false, ignore = [], verbose = false }) {
+  constructor({ dry = false, force = false, ignore = [], verbose = false } = {}) {
     this.ignore = ignore;
     this.dry = dry;
     this.outputPath = '';
@@ -34,7 +34,7 @@ class CleanPlugin {
     this.outputPath = compiler.options.output.path;
 
     if (compiler.hooks) {
-      compiler.hooks.emit.tap('CleanPlugin', this.cleanOutputDir);
+      compiler.hooks.emit.tap('CleanPlugin', () => this.cleanOutputDir());
     } else {
       compiler.plugin('CleanPlugin', (_, next) => {
         this.cleanOutputDir();
