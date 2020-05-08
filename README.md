@@ -1,4 +1,4 @@
-# clean-dist-webpack-plugin
+# clean-built-webpack-plugin
 
 A webpack plugin to clean your built directory before compiling.
 
@@ -10,14 +10,14 @@ ignoring.
 To begin, you need install it.
 
 ```console
-npm i -D clean-dist-webpack-plugin
+npm i -D clean-built-webpack-plugin
 ```
 
 Next, add plugin to your config, ex.:
 
 ```js
 // webpack.config.js
-const CleanPlugin = require('clean-dist-webpack-plugin');
+const CleanPlugin = require('clean-built-webpack-plugin');
 
 const config = {
   plugins: [
