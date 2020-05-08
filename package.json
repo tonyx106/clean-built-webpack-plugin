@@ -1,8 +1,8 @@
 {
-  "version": "1.1.7",
+  "version": "1.2.1",
   "name": "clean-built-webpack-plugin",
   "description": "A webpack plugin to clean your built directory before compiling",
-  "author": "Anton Vorobyov <tonyx106@gmail.com>",
+  "author": "Anton Vorobyov",
   "main": "index.js",
   "types": "index.d.ts",
   "keywords": [

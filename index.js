@@ -18,13 +18,16 @@ class CleanPlugin {
    * enabled if `dry` or `force` is `true`).
    * @param {boolean} [config.force] If `true`, allows deleting files outside 
    * current working directory.
+   * @param {'before' | 'after'} [config.event] Running time (before or after 
+   * compiling).
    */
-  constructor({ dry = false, force = false, ignore = [], verbose = false } = {}) {
+  constructor({ dry = false, force = false, ignore = [], verbose = false, event = 'after' } = {}) {
     this.ignore = ignore;
     this.dry = dry;
     this.outputPath = '';
     this.verbose = verbose;
     this.force = force;
+    this.event = event === 'before' ? 'emit' : 'done';
   }
 
   /**
@@ -34,9 +37,9 @@ class CleanPlugin {
     this.outputPath = compiler.options.output.path;
 
     if (compiler.hooks) {
-      compiler.hooks.emit.tap('CleanPlugin', () => this.cleanOutputDir());
+      compiler.hooks[this.event].tap('CleanPlugin', () => this.cleanOutputDir());
     } else {
-      compiler.plugin('CleanPlugin', (_, next) => {
+      compiler.plugin(this.event, (_, next) => {
         this.cleanOutputDir();
         next();
       });

@@ -19,6 +19,10 @@ interface Config {
    * If `true`, allows deleting files outside current working directory.
    */
   force?: boolean;
+  /**
+   * Running time (before or after compiling).
+   */
+  event?: 'before' | 'after'
 }
 
 /**
