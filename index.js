@@ -1,9 +1,5 @@
 const del = require('del');
 
-new CleanPlugin({
-  igno
-})
-
 /**
  * A webpack plugin to clean your built directory before compiling.
  * 
