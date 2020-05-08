@@ -1,3 +1,6 @@
+![version](https://img.shields.io/badge/version-1.2.3-blue)
+![dependencies](https://img.shields.io/badge/dependencies-up%20to%20date-brightgreen)
+
 # clean-built-webpack-plugin
 
 A webpack plugin to clean your built directory before compiling.
