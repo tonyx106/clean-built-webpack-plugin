@@ -37,7 +37,14 @@ class CleanPlugin {
   apply(compiler) {
     this.outputPath = compiler.options.output.path;
 
-    compiler.hooks.emit.tap('CleanPlugin', this.cleanOutputDir);
+    if (compiler.hooks) {
+      compiler.hooks.emit.tap('CleanPlugin', this.cleanOutputDir);
+    } else {
+      compiler.plugin('CleanPlugin', (_, next) => {
+        this.cleanOutputDir();
+        next();
+      });
+    }
   }
 
   /**
