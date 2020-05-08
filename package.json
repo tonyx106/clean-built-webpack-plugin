@@ -1,5 +1,5 @@
 {
-  "version": "1.3.4",
+  "version": "1.3.7",
   "name": "clean-built-webpack-plugin",
   "description": "A webpack plugin to clean your built directory before compiling",
   "author": "Anton Vorobyov",
