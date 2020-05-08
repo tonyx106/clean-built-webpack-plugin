@@ -14,6 +14,8 @@ class CleanPlugin {
    * what would be deleted.
    * @param {string[]} [config.ignore] The array of files to ignore, it supports
    * {@link https://github.com/sindresorhus/globby#globbing-patterns|glob patterns}.
+   * @param {string[]} [config.include] The array of files to remove (if not 
+   * specified, remove all files excluding specified in `ignore`). 
    * @param {boolean} [config.verbose] If `true`, writes logs to console (always 
    * enabled if `dry` or `force` is `true`).
    * @param {boolean} [config.force] If `true`, allows deleting files outside 
@@ -21,13 +23,14 @@ class CleanPlugin {
    * @param {'before' | 'after'} [config.event] Running time (before or after 
    * compiling).
    */
-  constructor({ dry = false, force = false, ignore = [], verbose = false, event = 'after' } = {}) {
+  constructor({ dry = false, force = false, include = ['*'], ignore = [], verbose = false, event = 'after' } = {}) {
     this.ignore = ignore;
     this.dry = dry;
     this.outputPath = '';
     this.verbose = verbose;
     this.force = force;
     this.event = event === 'before' ? 'emit' : 'done';
+    this.include = include;
   }
 
   /**
@@ -50,7 +53,7 @@ class CleanPlugin {
    * @private
    */
   cleanOutputDir() {
-    const files = del.sync(['*'], {
+    const files = del.sync(this.include, {
       cwd: this.outputPath,
       ignore: this.ignore,
       dryRun: this.dry,

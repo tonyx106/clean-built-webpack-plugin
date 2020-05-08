@@ -7,6 +7,11 @@ interface Config {
    */
   ignore?: string[];
   /**
+   * The array of files to remove (if not specified, remove all files excluding
+   * specified in `ignore`).
+   */
+  include?: string[];
+  /**
    * If `true`, writes logs to console (always enabled if `dry` or `force` is 
    * `true`). 
    */
