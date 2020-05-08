@@ -1,0 +1,63 @@
+const del = require('del');
+
+new CleanPlugin({
+  igno
+})
+
+/**
+ * A webpack plugin to clean your built directory before compiling.
+ * 
+ * An alternative to `clean-webpack-plugin` (an original plugin doesn't support
+ * ignoring files).
+ */
+class CleanPlugin {
+  /**
+   * @constructor
+   * @param {object} [config] 
+   * @param {boolean} [config.dry] If `true`, simulates the removing and see 
+   * what would be deleted.
+   * @param {string[]} [config.ignore] The array of files to ignore, it supports
+   * {@link https://github.com/sindresorhus/globby#globbing-patterns|glob patterns}.
+   * @param {boolean} [config.verbose] If `true`, writes logs to console (always 
+   * enabled if `dry` or `force` is `true`).
+   * @param {boolean} [config.force] If `true`, allows deleting files outside 
+   * current working directory.
+   */
+  constructor({ dry = false, force = false, ignore = [], verbose = false }) {
+    this.ignore = ignore;
+    this.dry = dry;
+    this.outputPath = '';
+    this.verbose = verbose;
+    this.force = force;
+  }
+
+  /**
+   * @private
+   */
+  apply(compiler) {
+    this.outputPath = compiler.options.output.path;
+
+    compiler.hooks.emit.tap('CleanPlugin', this.cleanOutputDir);
+  }
+
+  /**
+   * @private
+   */
+  cleanOutputDir = () => {
+    const files = del.sync(['*'], {
+      cwd: this.outputPath,
+      ignore: this.ignore,
+      dryRun: this.dry,
+      force: this.force
+    });
+
+    if (this.verbose || this.force || this.dry) {
+      console.warn(
+        '%scleaning directory "%s" result (\x1b[1m\x1b[33m%s\x1b[0m)\x1b[1m\x1b[32m\n%s\n\x1b[0m', 
+          this.force ? '\x1b[1m\x1b[33mrunning in forcex1b[0m\n' : '', this.outputPath, files.length, files.join('\n')
+      );
+    }
+  }
+}
+
+module.exports = CleanPlugin;

@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "name": "clean-dist-webpack-plugin",
+  "description": "A webpack plugin to clean your built directory before compiling",
+  "author": "Anton Vorobyov <tonyx106@gmail.com>",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "keywords": [
+    "webpack",
+    "clean",
+    "plugin"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tonyx106/clean-dist-webpack-plugin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tonyx106/clean-dist-webpack-plugin/issues"
+  },
+  "peerDependencies": {
+    "webpack": "*"
+  },
+  "dependencies": {
+    "del": "^5.1.0"
+  },
+  "license": "MIT"
+}
