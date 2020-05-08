@@ -23,7 +23,7 @@ class CleanPlugin {
    * @param {'before' | 'after'} [config.event] Running time (before or after 
    * compiling).
    */
-  constructor({ dry = false, force = false, include = ['*'], ignore = [], verbose = false, event = 'after' } = {}) {
+  constructor({ dry = false, force = false, include = ['*'], ignore = [], verbose = false, event = 'before' } = {}) {
     this.ignore = ignore;
     this.dry = dry;
     this.outputPath = '';
